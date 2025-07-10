@@ -22,3 +22,5 @@ app.use('/api/snippets', snippetRoutes);
 app.listen(PORT, ()=>{
     console.log('Server running on port 5000')
 })
+
+export default app;
