@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import { FileText, User, Code, Code2 } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,17 @@ const AddSnippet = () => {
   const [form, setForm] = useState({ title: '', code: '', language: '', author: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+// Handle screen resize
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -32,7 +43,7 @@ const AddSnippet = () => {
   const languageOptions = ['javascript', 'python', 'java', 'cpp', 'rust', 'go', 'typescript', 'html', 'css', 'sql'];
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
       <div style={{maxWidth: '70%', width: '100%', backgroundColor: 'rgba(30, 30, 45, 0.95)', borderRadius: '12px', padding: '24px', boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.1)'}}>
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <h2 style={{fontSize: '1.8em', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '6px', fontWeight: 'bold' }}>
@@ -61,7 +72,7 @@ const AddSnippet = () => {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <label style={{fontSize: '0.9em', fontWeight: '600', color: '#ccc', marginBottom: '6px' }}>
                 <Code style={{ width: '16px', height: '16px', marginRight: '6px', verticalAlign: 'middle' }} /> Language
