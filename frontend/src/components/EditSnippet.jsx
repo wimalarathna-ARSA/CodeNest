@@ -20,11 +20,11 @@ const EditSnippet = () => {
     e.preventDefault();
     await axios.put(`http://localhost:5000/api/snippets/${id}`, form);
     alert('Snippet updated successfully!'); 
-    navigate('/');
+    navigate('/snippetlist');
   };
 
   const handleCancel = () => {
-    navigate('/');
+    navigate('/snippetlist');
   };
 
   const languages = ['javascript', 'python', 'java', 'cpp', 'rust', 'go', 'typescript', 'html', 'css', 'sql'];
@@ -89,7 +89,7 @@ const EditSnippet = () => {
           <span style={{ backgroundColor: '#a855f7', padding: '0.25rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.75rem' }}>{user.membership}</span>
         </div>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/snippetlist')}
           style={{ background: 'linear-gradient(90deg, #60a5fa, #a855f7)', color: '#fff', padding: '0.75rem 1.5rem', borderRadius: '8px', fontWeight: '500', border: 'none', cursor: 'pointer', }}
         >
           + New Snippet

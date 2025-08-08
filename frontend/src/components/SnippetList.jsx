@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import AddSnippet from './AddSnippet';
-import { Clock , Trash2, Edit2, Star, User, Search, Copy  } from 'lucide-react';
-
+import { Clock , Trash2, Edit2, Star, User, Search, Copy, LogOut   } from 'lucide-react';
+import { Button } from '@mui/material';
 
 const SnippetList = () => {
   const [snippets, setSnippets] = useState([]);
@@ -95,6 +95,7 @@ const handleDelete = async (id) => {
     return matchesSearch && matchesLanguage;
   });
 
+  
 
   // Initial load
   useEffect(() => {
@@ -118,10 +119,25 @@ const handleDelete = async (id) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <span style={{ fontSize: '2rem', color: '#60a5fa' }}>⚡</span>
               <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>CodeNest</span>
+              <div>
+                <Button
+                  href="/"
+                  variant="contained"
+                  color="error"
+                  onClick={() => {}}
+                  style={{padding: "12px 24px", borderRadius: "16px", background: "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(10px)", color: "white", fontSize: "14px", fontWeight: "600", cursor: "pointer", transition: "all 0.3s ease", display: "flex",alignItems: "center", gap: "8px", textTransform: "none" }}
+                  onMouseOver={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.35)")}
+                  onMouseOut={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)")}
+                >
+                  <LogOut size={16} />
+                  LogOut
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </nav>
+      
 
       {/* Main Content */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '2rem' }}>
@@ -133,6 +149,7 @@ const handleDelete = async (id) => {
           <p style={{fontSize: '1.25rem',color: '#cbd5e1', marginBottom: '2rem'}}>
             Explore a curated collection of code snippets from the community
           </p>
+
           {/* Search Bar */}
           <div style={{ position: 'relative', maxWidth: '32rem', margin: '0 auto' }}>
            <div style={{ position: 'relative' }}>

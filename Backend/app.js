@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import snippetRoutes from './routes/snippetRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config(); 
 
@@ -18,6 +19,7 @@ mongoose.connect(MONGO_URI)
 .catch(err=>console.log(err));
 
 app.use('/api/snippets', snippetRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(PORT, ()=>{
     console.log('Server running on port 5000')

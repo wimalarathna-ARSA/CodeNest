@@ -132,7 +132,7 @@ useEffect(() => {
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', marginTop: '8px' }}>
             <button
               type="button"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/snippetlist')}
               style={{ padding: '10px 20px', fontSize: '0.9em', fontWeight: '600', border: '1px solid #444', borderRadius: '6px', backgroundColor: 'transparent', color: '#ccc', cursor: 'pointer',transition: 'all 0.3s ease'}}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = '#2a2a3e';
